@@ -1,7 +1,7 @@
-<div class="font-sans  w-screen overflow-y-auto" class="Scroll-container">
+<div class="font-sans  w-screen overflow-y-auto" class="Scroll-container" id="moveTop">
   <div class="flex flex-col">
-
-    <section class="w-screen h-screen ">
+    <section class="w-screen h-screen  flex flex-col">
+      <div class="w-5/6 h-20 bg-white rounded-2xl relative -top-3 self-center border-2 border-color-black z-20"></div>
       <div class="ml-8 mt-0 pt-8 xl:pt-24 xl:ml-24">
         <div class="text-4xl xl:text-6xl">Joseph Hodes</div>
         <div class="text-2xl xl:text-2xl">Passionate software engineer.</div>
@@ -58,6 +58,31 @@
         </svg>
       </div>
     </section>
+    <section>
+      <div class="h-screen w-screen bg-lastblu flex flex-col overflow-y-none">
+        <div
+          class="w-5/6 h-full bg-white rounded-2xl self-center  shadow-lg self-center  mt-proper z-10 md:h-container "></div>
+        <svg class="waves" class="relative bottom-0 h-full -mt-96 md:h-waves  z-0 md:-mt-64 "
+             xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 31 150 50" preserveAspectRatio="none"
+             shape-rendering="auto">
+          <defs>
+            <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+          </defs>
+          <g class="parallax">
+            <use xlink:href="#gentle-wave" x="48" y="10" fill="#002C48"/>
+            <use xlink:href="#gentle-wave" x="48" y="20" fill="#002339"/>
+            <use xlink:href="#gentle-wave" x="48" y="30" fill="#001320"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+    <section>
+      <div class="h-screen w-screen bg-bottomBlack flex flex-col overflow-y-none">
+        <button (click)="scrollToTop()" class="w-96 h-20 bg-white"></button>
+      </div>
+    </section>
   </div>
+
 
 </div>
