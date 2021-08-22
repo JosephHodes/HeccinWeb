@@ -5,5 +5,5 @@ import (
 )
 
 func Blog(w http.ResponseWriter, r *http.Request) {
-	w.Write("helloworld")
+	w.WriteHeader(200)
 }

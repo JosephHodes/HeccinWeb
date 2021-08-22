@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/JosephHodes/HeccinWeb/Server/Blog"
 	"net/http"
+	"github.com/JosephHodes/HeccinWeb/Server/Blog""
 )
 
 func main() {

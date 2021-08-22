@@ -6,8 +6,6 @@
 FROM golang:latest as builder
 USER ${USER}
 WORKDIR /usr/src/app
-COPY go.mod go.sum ./
-RUN go mod download
 COPY . ./
 ENV GO111MODULE="on" \
   GOARCH="amd64" \
