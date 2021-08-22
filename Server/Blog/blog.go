@@ -1,10 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func blog(w http.ResponseWriter, r *http.Request) {
-
-}
-func main() {
 
 }
