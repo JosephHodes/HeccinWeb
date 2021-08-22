@@ -7,11 +7,11 @@ import (
 )
 
 func Blog(w http.ResponseWriter, r *http.Request) {
-	switch r.method {
+	switch r.Method {
 	case "GET":
 		{
 			fmt.Fprintf(w, "hello worlds")
-			log.println("response sent")
+			log.Println("works")
 		}
 	}
 }
