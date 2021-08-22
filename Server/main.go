@@ -1,12 +1,14 @@
-package Server
+package main
 
-import "net/http"
+import (
+	"github.com/JosephHodes/HeccinWeb/Server/Blog"
+	"net/http"
+)
 
-
-func main(){
+func main() {
 	http.HandleFunc(
 		"/blog",
-		blog
+		blog,
 	)
 	http.ListenAndServe(":8000", nil)
 }
