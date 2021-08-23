@@ -19,6 +19,14 @@ func main() {
 		"/",
 		blog.Blog,
 	)
-
+	err := redisClient.Set(redisClient.Context(), "name", "Elliot", 0).Err()
+	if err != nil {
+		fmt.Println(err)
+	}
+	val, err := redisClient.Get(redisClient.Context(), "name").Result()
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(val)
 	http.ListenAndServe(":8000", nil)
 }
