@@ -5,9 +5,15 @@ import (
 	"github.com/JosephHodes/HeccinWeb/Server/Blog"
 	"github.com/JosephHodes/HeccinWeb/Server/Utils"
 	"github.com/go-redis/redis"
+	"github.com/go-redsync/redsync"
+	"github.com/go-redsync/redsync/redis/redigo"
+	redis3 "github.com/gomodule/redigo/redis"
 	"log"
 	"net/http"
+	"reflect"
 )
+
+var redsyncz *redsync.Redsync
 
 func main() {
 	redisClient := redis.NewClient(&redis.Options{
@@ -15,7 +21,10 @@ func main() {
 		Password: "",
 		DB:       0,
 	})
-	log.Println(redisClient)
+	p := &redis3.Pool{}
+	pool := redigo.NewPool(p)
+	log.Println(reflect.TypeOf(pool))
+	redsyncz = redsync.New(pool)
 	utils.RateLimiter("111.111.111.11", redisClient)
 	http.HandleFunc(
 		"/",
