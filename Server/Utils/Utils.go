@@ -5,5 +5,5 @@ import (
 )
 
 func RateLimiter(ip string, redisClient redis.Client) boolean {
-
+	return true
 }

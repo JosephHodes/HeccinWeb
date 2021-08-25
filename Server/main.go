@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/JosephHodes/HeccinWeb/Server/Blog"
+	"github.com/JosephHodes/HeccinWeb/Server/Utils"
 	"github.com/go-redis/redis"
 	"log"
 	"net/http"
@@ -19,14 +20,14 @@ func main() {
 		"/",
 		blog.Blog,
 	)
-	err := redisClient.Set(redisClient.Context(), "name", "Elliot", 0).Err()
-	if err != nil {
-		fmt.Println(err)
-	}
-	val, err := redisClient.Get(redisClient.Context(), "name").Result()
+
+	err := redisClient.Set(redisClient.Context(), "name", "122.223.444", 1)
+
+	val := redisClient.Get(redisClient.Context(), "name")
 	if err != nil {
 		fmt.Println(err)
 	}
 	fmt.Println(val)
+
 	http.ListenAndServe(":8000", nil)
 }
