@@ -3,10 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/JosephHodes/HeccinWeb/Server/Blog"
-	"github.com/JosephHodes/HeccinWeb/Server/Utils"
 	"github.com/go-redis/redis"
-	"log"
 	"net/http"
+	"reflect"
 )
 
 func main() {
@@ -15,7 +14,8 @@ func main() {
 		Password: "",
 		DB:       0,
 	})
-	log.Println("working")
+	fmt.Println(reflect.TypeOf(redisClient))
+
 	http.HandleFunc(
 		"/",
 		blog.Blog,
