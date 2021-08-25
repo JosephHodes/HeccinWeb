@@ -3,9 +3,10 @@ package main
 import (
 	"fmt"
 	"github.com/JosephHodes/HeccinWeb/Server/Blog"
+	"github.com/JosephHodes/HeccinWeb/Server/Utils"
 	"github.com/go-redis/redis"
+	"log"
 	"net/http"
-	"reflect"
 )
 
 func main() {
@@ -14,8 +15,8 @@ func main() {
 		Password: "",
 		DB:       0,
 	})
-	fmt.Println(reflect.TypeOf(redisClient))
-
+	log.Println(redisClient)
+	utils.RateLimiter("111.111.111.11", redisClient)
 	http.HandleFunc(
 		"/",
 		blog.Blog,
