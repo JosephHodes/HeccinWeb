@@ -1,8 +1,8 @@
 package utils
 
 import (
+	main "./../main"
 	"fmt"
-	main "github.com/JosephHodes/HeccinWeb/Server/"
 	"github.com/go-redis/redis"
 	"strconv"
 	"time"
@@ -13,7 +13,7 @@ import (
 // the rate limit
 
 func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expiration int) error {
-	ahh := main.redsyncz
+	ahh := main.Redsyncz
 	fmt.Println(ahh)
 	val, err := redisClient.Get(redisClient.Context(), ip).Result()
 	if err != nil {
@@ -33,7 +33,7 @@ func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expirati
 	if rateLimit == i {
 		return fmt.Errorf("to many requests : ratelimit")
 	}
-	mutex.lock()
+
 	i++
 
 	err = redisClient.Set(redisClient.Context(), ip, int(i), time.Duration(expiration))
