@@ -1,7 +1,6 @@
 package utils
 
 import (
-	main "./../main"
 	"fmt"
 	"github.com/go-redis/redis"
 	"github.com/go-redsync/redsync"
