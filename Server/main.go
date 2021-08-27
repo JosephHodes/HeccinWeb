@@ -13,8 +13,6 @@ import (
 	"reflect"
 )
 
-
-
 func main() {
 	redisClient := redis.NewClient(&redis.Options{
 		Addr:     "localhost:6379",
@@ -24,7 +22,7 @@ func main() {
 	p := &redis3.Pool{}
 	pool := redigo.NewPool(p)
 	log.Println(reflect.TypeOf(pool))
-	utils.= redsync.New(pool)
+	utils.Mutex = redsync.New(pool)
 
 	utils.RateLimiter("111.111.111.11", redisClient, 10, 5)
 	http.HandleFunc(
