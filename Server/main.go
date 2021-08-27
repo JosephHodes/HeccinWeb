@@ -24,7 +24,7 @@ func main() {
 	log.Println(reflect.TypeOf(pool))
 	utils.Mutex = redsync.New(pool)
 
-	utils.RateLimiter("111.111.111.11", redisClient, 10, 5)
+	utils.IsRateLimited("111.111.111.11", redisClient, 10, 5)
 	http.HandleFunc(
 		"/",
 		blog.Blog,
