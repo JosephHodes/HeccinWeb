@@ -4,14 +4,16 @@ import (
 	main "./../main"
 	"fmt"
 	"github.com/go-redis/redis"
+	"github.com/go-redsync/redsync"
 	"strconv"
 	"time"
 )
 
+var Redsyncz *redsync.Redsync = nil
+
 // IsRateLimited this function you enter the ip and the amount you want to rate limit
 // then the expiration for the time you want your ip to expire and it checks the and blocks ips that surpass
 // the rate limit
-
 func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expiration int) error {
 	ahh := main.Redsyncz
 	fmt.Println(ahh)

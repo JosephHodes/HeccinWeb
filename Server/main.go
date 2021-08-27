@@ -13,7 +13,7 @@ import (
 	"reflect"
 )
 
-var Redsyncz *redsync.Redsync
+
 
 func main() {
 	redisClient := redis.NewClient(&redis.Options{
@@ -24,7 +24,8 @@ func main() {
 	p := &redis3.Pool{}
 	pool := redigo.NewPool(p)
 	log.Println(reflect.TypeOf(pool))
-	Redsyncz = redsync.New(pool)
+	utils.= redsync.New(pool)
+
 	utils.RateLimiter("111.111.111.11", redisClient, 10, 5)
 	http.HandleFunc(
 		"/",
