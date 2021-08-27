@@ -15,7 +15,6 @@ var Mutex *redsync.Redsync = nil
 // the rate limit
 func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expiration int) error {
 
-	fmt.Println(ahh)
 	val, err := redisClient.Get(redisClient.Context(), ip).Result()
 	if err != nil {
 		if err == redis.Nil {
