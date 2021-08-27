@@ -28,13 +28,13 @@ func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expirati
 
 	i, err := strconv.Atoi(val)
 	if err != nil {
-		fmt.Errorf("strconv  : ratelimit %w", err)
+		return fmt.Errorf("strconv  : ratelimit %w", err)
 	}
 	if rateLimit == i {
 		return fmt.Errorf("to many requests : ratelimit")
 	}
-	Mutex.NewMutex(ip)
-	if err := mutex.Lock(); err != nil {
+	newMutex := Mutex.NewMutex(ip)
+	if err := newMutex.Lock(); err != nil {
 		return fmt.Errorf("error using mutex lock: ratelimit: %w", err)
 	}
 	i++
@@ -44,7 +44,7 @@ func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expirati
 		return fmt.Errorf("setting content in redis : ratelimit: %w", err)
 
 	}
-	if ok, err := mutex.Unlock(); !ok || err != nil {
+	if ok, err := newMutex.Unlock(); !ok || err != nil {
 		return fmt.Errorf("error using mutex unlock: ratelimit: %w", err)
 	}
 	return nil
