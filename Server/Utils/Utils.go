@@ -14,7 +14,7 @@ var Redsyncz *redsync.Redsync = nil
 // then the expiration for the time you want your ip to expire and it checks the and blocks ips that surpass
 // the rate limit
 func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expiration int) error {
-	ahh := main.Redsyncz
+
 	fmt.Println(ahh)
 	val, err := redisClient.Get(redisClient.Context(), ip).Result()
 	if err != nil {
