@@ -16,7 +16,7 @@ func Blog(w http.ResponseWriter, r *http.Request) {
 		{
 
 			log.Println("works")
-			err := utils.IsRateLimited(r.RemoteAddr, RedisClient, 10, 1)
+			err := utils.IsRateLimited(r.RemoteAddr, RedisClient, 10, 10)
 			if err != nil {
 				return
 			}

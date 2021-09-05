@@ -23,8 +23,7 @@ func main() {
 	pool := redigo.NewPool(p)
 	log.Println(reflect.TypeOf(pool))
 	utils.Mutex = redsync.New(pool)
-	blog.
-		utils.IsRateLimited("111.111.111.11", redisClient, 10, 5)
+	blog.RedisClient = redisClient
 	http.HandleFunc(
 		"/",
 		blog.Blog,
@@ -38,5 +37,8 @@ func main() {
 	}
 	fmt.Println(val)
 
-	http.ListenAndServe(":8000", nil)
+	_ = http.ListenAndServe(":8000", nil)
+	if err != nil {
+		return
+	}
 }
