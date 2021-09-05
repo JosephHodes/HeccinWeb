@@ -8,15 +8,22 @@ import (
 	"net/http"
 )
 
-var redisClient *redis.Client = nil
+var RedisClient *redis.Client = nil
 
 func Blog(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		{
-			fmt.Fprintf(w, "hello worlds")
+
 			log.Println("works")
-			utils.IsRateLimited(r.RemoteAddr, redisClient, 10, 1)
+			err := utils.IsRateLimited(r.RemoteAddr, RedisClient, 10, 1)
+			if err != nil {
+				return
+			}
+			_, err = fmt.Fprintf(w, "hello worlds")
+			if err != nil {
+				return
+			}
 		}
 	}
 }

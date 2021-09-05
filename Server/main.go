@@ -23,9 +23,8 @@ func main() {
 	pool := redigo.NewPool(p)
 	log.Println(reflect.TypeOf(pool))
 	utils.Mutex = redsync.New(pool)
-	bl
-
-	utils.IsRateLimited("111.111.111.11", redisClient, 10, 5)
+	blog.
+		utils.IsRateLimited("111.111.111.11", redisClient, 10, 5)
 	http.HandleFunc(
 		"/",
 		blog.Blog,
