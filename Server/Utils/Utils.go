@@ -39,7 +39,7 @@ func IsRateLimited(ip string, redisClient *redis.Client, rateLimit int, expirati
 	}
 	i++
 
-	err = redisClient.Set(redisClient.Context(), ip, int(i), time.Duration(expiration))
+	err = redisClient.Set(redisClient.Context(), ip, int(i), time.Duration(expiration*1000*60))
 	if err != nil {
 		return fmt.Errorf("setting content in redis : ratelimit: %w", err)
 
